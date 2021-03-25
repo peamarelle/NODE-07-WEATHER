@@ -6,6 +6,7 @@ if(!envFound){
 }
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.PORT = process.env.PORT || 5000;
 
 module.exports = {
     port: process.env.PORT,
@@ -17,5 +18,9 @@ module.exports = {
     },
     swagger: {
         path: '/documentation'
+    },
+    mapbox: {
+        apiKey: process.env.MAPBOX_API_KEY,
+        pathBase: 'https://api.mapbox.com/geocoding/v5/mapbox.places/'
     }
 }

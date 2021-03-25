@@ -1,47 +1,46 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "API Rest base repo.",
-    "description": "## This is a base api to start new projects.",
-    "version": "0.0.1",
+    "title": "API Rest base repo",
+    "description": "This is a api base to start new projects",
     "contact": {
-      "email": "fervaldes11@gmail.com"
-    }
-  },
-  
-  "servers":[
-    {
-      "url":"http://localhost:4000/api/v1",
-      "description": "Desarrollo"  
+      "email": "peamarelle@gmail.com"
     },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "0.0.1"
+  },
+  "servers": [
     {
-      "url":"https://node-06-restserver.herokuapp.com/api/v1",
-      "description": "Producción"  
-    } 
+      "url": "http://localhost:3000/api/v1",
+      "description": "Desarrollo"
+    }
   ],
-  "tags": [    
+  "tags": [
     {
       "name": "users",
-      "description": "Operations about users."
+      "description": "Users operations"
     }
   ],
-  "paths": {    
-    "/users/": {
+  "paths": {
+    "/users": {
       "get": {
         "tags": [
           "users"
         ],
-        "summary": "Get a list of all existing users.",
-        "description": "",             
+        "summary": "Get all users",
+        "description": "You can get all users in the system\n",
         "responses": {
           "200": {
-            "description": "The array of users in JSON format.",
+            "description": "User´s array list in JSON format",
             "content": {
-              "application/json":{
-                "schema":{
+              "application/json": {
+                "schema": {
                   "type": "array",
-                  "items":{
-                    "$ref": "#/components/schemas/User"                    
+                  "items": {
+                    "$ref": "#/components/schemas/cities"
                   }
                 }
               }
@@ -53,9 +52,11 @@
         "tags": [
           "users"
         ],
-        "summary": "Create a new user.",
-        "description": "",
+        "summary": "Create a new user",
+        "description": "Adds a new user to system",
+        "operationId": "addInventory",
         "requestBody": {
+          "description": "New user to add",
           "content": {
             "application/json": {
               "schema": {
@@ -66,7 +67,7 @@
         },
         "responses": {
           "201": {
-            "description": "User created."
+            "description": "user created"
           }
         }
       }
@@ -76,38 +77,24 @@
         "tags": [
           "users"
         ],
-        "summary": "Update an existing user by providing the id.",
-        "description": "",           
-        "parameters":[          
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The id of the user that needs to be updated.",
-            "required": true,
-            "schema": {
-              "type":"integer"
-            }
-          }          
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
-            }
-          }
-        }, 
+        "summary": "update user",
+        "description": "You can update aspecific user\n",
+        "parameters": {
+          "in": "path",
+          "name": "id",
+          "required": "true"
+        },
         "responses": {
           "200": {
-            "description": "The user updated",
-            "content":{
-              "application/json":{
-                "schema":{
-                  "type": "object",
-                  "$ref": "#/components/schemas/User" 
+            "description": "User in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
                 }
-              }              
+              }
             }
           }
         }
@@ -116,22 +103,25 @@
         "tags": [
           "users"
         ],
-        "summary": "Delete an existing user by providing the id.",
-        "description": "",
-        "parameters":[          
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The id of the user that needs to be deleted.",
-            "required": true,
-            "schema": {
-              "type":"integer"
-            }
-          }          
-        ],     
+        "summary": "delete user",
+        "description": "You can delete aspecific user\n",
+        "parameters": {
+          "in": "path",
+          "name": "id",
+          "required": "true"
+        },
         "responses": {
           "200": {
-            "description": "User deleted."
+            "description": "User in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -141,19 +131,19 @@
     "schemas": {
       "User": {
         "required": [
-          "id"
+          "id",
+          "name"
         ],
         "type": "object",
         "properties": {
-          "id":{
-            "description": "The user id.",
-            "type": "integer",          
-            "example": "3"
+          "id": {
+            "type": "objectId",
+            "format": "document id",
+            "example": "605407f340bc9e39749e20a1"
           },
-          "name":{
-            "description": "The user name.",
-            "type":"string",          
-            "example":"Adrian"
+          "name": {
+            "type": "string",
+            "example": "Natali"
           }
         }
       }
