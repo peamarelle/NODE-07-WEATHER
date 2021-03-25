@@ -8,7 +8,7 @@
 
 * Run command npm install
 
-* Generate .env file.
+* Generate .env file with mapbox apikey.
 
 # Scripts
 
@@ -35,5 +35,5 @@
 
 # Routes
 
-* GET /weather/{city} (get all cities with this name).
+* GET /weather/{city} (get list of cities with named as url param in Json format).
 * GET /documentation (api documentation).
