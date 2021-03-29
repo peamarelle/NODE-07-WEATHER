@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const {
-    cities
-} = require('../controllers/weather');
+    cities 
+} = require('../controllers/cities');
 
 const router = Router();
 
