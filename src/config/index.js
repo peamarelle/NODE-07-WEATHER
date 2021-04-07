@@ -25,6 +25,6 @@ module.exports = {
     },
     openweathermap: {
         apiKey: process.env.OPEN_WEATHER_MAP,
-        pathBase: 'api.openweathermap.org/data/2.5/weather'
+        pathBase: 'https://api.openweathermap.org/data/2.5/weather'
     }
 }
